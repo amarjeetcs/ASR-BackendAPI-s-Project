@@ -1,0 +1,25 @@
+package com.aviraj.core.java;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+public class Practical {
+	public static void main(String[] args) {
+		int x=10;
+		Integer i=Integer.valueOf(x);//since java 1.5 u  do not need to write it
+		Integer i1=x;
+		System.out.println(i1.getClass().getName());
+		
+		//autoboxing 
+		//primitive data type to object
+		
+		Integer in=6;
+		System.out.println(in.getClass().getName());
+
+		int x2=in;
+		System.out.println(x2);
+		
+		
+	}
+
+}

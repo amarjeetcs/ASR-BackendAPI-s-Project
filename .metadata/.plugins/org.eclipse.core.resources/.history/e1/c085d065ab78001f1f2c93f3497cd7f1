@@ -1,0 +1,30 @@
+package com.asr.website.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.asr.website.model.Trainer;
+import com.asr.website.repository.TrainerRepository;
+import com.asr.website.service.TrainerService;
+
+@RestController
+@CrossOrigin(origins = "http://127.0.0.1:5500")
+@RequestMapping("/api/job-applications")
+public class TrainerController {
+	@Autowired
+	private TrainerRepository traienrRepository;
+	
+	@PostMapping
+    public ResponseEntity<Trainer> submitApplication(@RequestBody Trainer trainer) {
+        Trainer savedTrainer = traienrRepository.save(trainer);
+        return ResponseEntity.ok(savedTrainer);
+    }
+	
+
+}

@@ -1,0 +1,26 @@
+package com.aviraj.core.java;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+public class Practical {
+	public static void main(String[] args) {
+		
+		
+		Integer in=34;
+		System.out.println(in.hashCode());
+		
+		
+		//toString()
+		//getClass()(done)
+		//hashCode()
+		//wait()
+		//clone()
+		//equals()(done)
+		//notify();
+		//notifyal
+		//finalize()
+		
+	}
+
+}

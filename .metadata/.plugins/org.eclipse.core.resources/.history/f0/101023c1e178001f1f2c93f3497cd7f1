@@ -1,0 +1,7 @@
+package com.asr.website.service;
+
+import com.asr.website.model.JobApplication;
+
+public interface JobApplicationService {
+    JobApplication submitApplication(JobApplication application);
+}

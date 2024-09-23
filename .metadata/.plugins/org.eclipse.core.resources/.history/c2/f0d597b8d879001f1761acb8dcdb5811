@@ -1,0 +1,45 @@
+package com.aviraj.core.java;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+
+		
+//public class Practical {
+//    public static void main(String[] args) {
+//        int x = -10;
+//        double y = -12.5;
+//        
+//        System.out.println(Math.abs(x));   // Output: 10
+//        System.out.println(Math.abs(y));   // Output: 12.5
+//    }
+//}
+/*
+ * public class Practical { public static void main(String[] args) { int a = 5,
+ * b = 10;
+ * 
+ * System.out.println(Math.max(a, b)); // Output: 10
+ * System.out.println(Math.min(a, b)); // Output: 5 } }
+ */
+public class Practical {
+    public static void main(String[] args) {
+        double number = 16;
+        
+        System.out.println(Math.sqrt(number));  // Output: 4.0
+    }
+}
+
+
+		
+		
+		
+		//toString()
+		//getClass()(done)
+		//hashCode()->map and equals
+		//wait()
+		//clone()
+		//equals()(done)
+		//notify();
+		//notifyal
+		//finalize()
+		

@@ -1,0 +1,10 @@
+package com.asr.website.service;
+
+import org.springframework.stereotype.Service;
+
+import com.asr.website.model.JobApplication;
+
+@Service
+public interface TrainerService {
+	JobApplication submitApplication(JobApplication application);
+}

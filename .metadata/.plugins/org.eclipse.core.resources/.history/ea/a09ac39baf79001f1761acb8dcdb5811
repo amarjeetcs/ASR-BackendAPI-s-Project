@@ -1,0 +1,16 @@
+package com.asr.website.service.impl;
+
+import com.asr.website.service.SubscriberService;
+import org.springframework.stereotype.Service;
+
+@Service
+public class SubscriberServiceImpl implements SubscriberService {
+
+    @Override
+    public String addSubscriber(String email) {
+        // Business logic to handle the subscription, e.g., saving to the database
+        // For now, we just return a success message for simplicity
+        System.out.println("Saving email: " + email);  // Simulating the process
+        return "Subscriber added successfully";
+    }
+}

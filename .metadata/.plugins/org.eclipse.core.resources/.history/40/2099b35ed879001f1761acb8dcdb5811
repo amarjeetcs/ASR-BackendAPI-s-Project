@@ -1,0 +1,30 @@
+package com.aviraj.core.java;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+
+		
+public class Practical {
+    public static void main(String[] args) {
+        int x = -10;
+        double y = -12.5;
+        
+        System.out.println(Math.abs(x));   // Output: 10
+        System.out.println(Math.abs(y));   // Output: 12.5
+    }
+}
+
+		
+		
+		
+		//toString()
+		//getClass()(done)
+		//hashCode()->map and equals
+		//wait()
+		//clone()
+		//equals()(done)
+		//notify();
+		//notifyal
+		//finalize()
+		

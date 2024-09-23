@@ -1,0 +1,5 @@
+package com.asr.website.controller;
+
+public class StudentRegistrationController {
+
+}

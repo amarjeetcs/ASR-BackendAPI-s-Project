@@ -1,0 +1,10 @@
+package com.asr.website.model;
+
+public class Subscriber {
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String email;
+
+}

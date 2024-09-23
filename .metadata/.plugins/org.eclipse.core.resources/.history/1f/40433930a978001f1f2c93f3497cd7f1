@@ -1,0 +1,17 @@
+package com.asr.website.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.asr.website.model.JobApplication;
+import com.asr.website.repository.JobApplicationRepository;
+import com.asr.website.service.TrainerService;
+
+public class TrainerServiceImpl implements TrainerService {
+	@Autowired
+	private JobApplicationRepository jobApplicationRepository;
+
+	@Override
+	public JobApplication submitApplication(JobApplication application) {
+		return jobApplicationRepository.save(application);
+	}
+}

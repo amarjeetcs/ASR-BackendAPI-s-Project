@@ -1,0 +1,33 @@
+package com.asr.website.controller;
+
+import com.asr.website.service.SubscriberService;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@CrossOrigin(origins = "http://127.0.0.1:5500")
+@RequestMapping("/api/newsletter")
+public class SubscriberController {
+
+    @Autowired
+    private SubscriberService subscriberService;
+
+	/*
+	 * @PostMapping("/subscribe") public ResponseEntity<String>
+	 * subscribe(@RequestParam("email") String email) {
+	 * subscriberService.addSubscriber(email); return
+	 * ResponseEntity.ok("Successfully subscribed with email: " + email); }
+	 */
+    
+    @PostMapping("/subscribe")
+    public ResponseEntity<String> subscribe(@RequestBody Map<String, String> requestBody) {
+        String email = requestBody.get("email");  // Extract email from JSON request body
+        subscriberService.addSubscriber(email);
+        return ResponseEntity.ok("Successfully subscribed with email: " + email);
+    }
+
+}

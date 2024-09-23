@@ -1,0 +1,23 @@
+package com.asr.website.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.asr.website.model.JobApplication;
+import com.asr.website.service.JobApplicationService;
+
+@RestController
+@CrossOrigin(origins = "http://127.0.0.1:5500")
+@RequestMapping("/api/job-applications")
+public class JobApplicationController {
+
+    @Autowired
+    private JobApplicationService jobApplicationService;
+
+    @PostMapping
+    public ResponseEntity<JobApplication> submitApplication(@RequestBody JobApplication application) {
+        JobApplication savedApplication = jobApplicationService.submitApplication(application);
+        return ResponseEntity.ok(savedApplication);
+    }
+}

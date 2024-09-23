@@ -1,0 +1,21 @@
+package com.asr.website.controller;
+
+import com.asr.website.service.SubscriberService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@CrossOrigin(origins = "http://127.0.0.1:5500")
+@RequestMapping("/api/newsletter")
+public class SubscriberController {
+
+    @Autowired
+    private SubscriberService subscriberService;
+
+    @PostMapping("/subscribe")
+    public ResponseEntity<String> subscribe(@RequestParam String email) {
+        subscriberService.addSubscriber(email);  // Passing the email to the service method
+        return ResponseEntity.ok("Successfully subscribed with email: " + email);
+    }
+}

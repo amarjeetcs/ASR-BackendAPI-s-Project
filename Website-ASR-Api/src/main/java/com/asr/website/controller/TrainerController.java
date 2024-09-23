@@ -1,0 +1,265 @@
+/*
+ * package com.asr.website.controller;
+ * 
+ * import org.springframework.beans.factory.annotation.Autowired; import
+ * org.springframework.http.ResponseEntity; import
+ * org.springframework.web.bind.annotation.CrossOrigin; import
+ * org.springframework.web.bind.annotation.PostMapping; import
+ * org.springframework.web.bind.annotation.RequestMapping; import
+ * org.springframework.web.bind.annotation.RequestParam; import
+ * org.springframework.web.bind.annotation.RestController; import
+ * org.springframework.web.multipart.MultipartFile;
+ * 
+ * import com.asr.website.model.Trainer; import
+ * com.asr.website.service.TrainerService;
+ * 
+ * @RestController
+ * 
+ * @CrossOrigin(origins = "http://127.0.0.1:5500")
+ * 
+ * @RequestMapping("/api/trainers") public class TrainerController {
+ * 
+ * @Autowired private TrainerService trainerService;
+ * 
+ * @PostMapping(consumes = "multipart/form-data") public ResponseEntity<Trainer>
+ * submitApplication(
+ * 
+ * @RequestParam("name") String name,
+ * 
+ * @RequestParam("email") String email,
+ * 
+ * @RequestParam("phone") String phone,
+ * 
+ * @RequestParam("expertise") String expertise,
+ * 
+ * @RequestParam("experience") int experience,
+ * 
+ * @RequestParam("bio") String bio,
+ * 
+ * @RequestParam("resume") MultipartFile resume) {
+ * 
+ * // Create a Trainer object and set fields Trainer trainer = new Trainer();
+ * trainer.setName(name); trainer.setEmail(email); trainer.setPhone(phone);
+ * trainer.setExpertise(expertise); trainer.setExperience(experience);
+ * trainer.setBio(bio);
+ * 
+ * // Save the trainer object Trainer savedTrainer =
+ * trainerService.submitApplication(trainer);
+ * 
+ * // (Optional) Handle file storage for resume here
+ * 
+ * return ResponseEntity.ok(savedTrainer); } }
+ */
+
+/*
+ * package com.asr.website.controller;
+ * 
+ * import org.springframework.beans.factory.annotation.Autowired; import
+ * org.springframework.http.ResponseEntity; import
+ * org.springframework.web.bind.annotation.CrossOrigin; import
+ * org.springframework.web.bind.annotation.PostMapping; import
+ * org.springframework.web.bind.annotation.RequestMapping; import
+ * org.springframework.web.bind.annotation.RequestParam; import
+ * org.springframework.web.bind.annotation.RestController; import
+ * org.springframework.web.multipart.MultipartFile;
+ * 
+ * import com.asr.website.model.Trainer; import
+ * com.asr.website.service.TrainerService;
+ * 
+ * import java.io.File; import java.io.IOException; import java.nio.file.Files;
+ * import java.nio.file.Path; import java.nio.file.Paths;
+ * 
+ * @RestController
+ * 
+ * @CrossOrigin(origins = "http://127.0.0.1:5500")
+ * 
+ * @RequestMapping("/api/trainers") public class TrainerController {
+ * 
+ * @Autowired private TrainerService trainerService;
+ * 
+ * // Path to store uploaded resumes (ensure this directory exists) private
+ * static final String UPLOAD_DIR = "uploads/resumes/";
+ * 
+ * @PostMapping(consumes = "multipart/form-data") public ResponseEntity<Trainer>
+ * submitApplication(
+ * 
+ * @RequestParam("name") String name,
+ * 
+ * @RequestParam("email") String email,
+ * 
+ * @RequestParam("phone") String phone,
+ * 
+ * @RequestParam("expertise") String expertise,
+ * 
+ * @RequestParam("experience") int experience,
+ * 
+ * @RequestParam("bio") String bio,
+ * 
+ * @RequestParam("resume") MultipartFile resume) {
+ * 
+ * // Save the uploaded resume file String resumeFileName =
+ * saveResumeFile(resume);
+ * 
+ * // Create a Trainer object and set the fields Trainer trainer = new
+ * Trainer(); trainer.setName(name); trainer.setEmail(email);
+ * trainer.setPhone(phone); trainer.setExpertise(expertise);
+ * trainer.setExperience(experience); trainer.setBio(bio);
+ * trainer.setResumePath(resumeFileName); // Store the resume file path in the
+ * database
+ * 
+ * // Save the trainer object in the database Trainer savedTrainer =
+ * trainerService.submitApplication(trainer);
+ * 
+ * return ResponseEntity.ok(savedTrainer); }
+ * 
+ * // Save resume file method private String saveResumeFile(MultipartFile
+ * resume) { if (resume.isEmpty()) { return null; // Return null if no file is
+ * uploaded }
+ * 
+ * // Generate a unique file name String fileName = System.currentTimeMillis() +
+ * "_" + resume.getOriginalFilename();
+ * 
+ * try { // Save the file to the upload directory Path filePath =
+ * Paths.get(UPLOAD_DIR + fileName);
+ * Files.createDirectories(filePath.getParent()); // Ensure the directory exists
+ * Files.write(filePath, resume.getBytes());
+ * 
+ * return filePath.toString(); // Return the file path for storage in the
+ * database } catch (IOException e) { e.printStackTrace(); throw new
+ * RuntimeException("Failed to store file " + fileName, e); } } }
+ */
+
+
+/*
+ * package com.asr.website.controller;
+ * 
+ * import org.springframework.beans.factory.annotation.Autowired; import
+ * org.springframework.http.ResponseEntity; import
+ * org.springframework.web.bind.annotation.CrossOrigin; import
+ * org.springframework.web.bind.annotation.PostMapping; import
+ * org.springframework.web.bind.annotation.RequestMapping; import
+ * org.springframework.web.bind.annotation.RequestParam; import
+ * org.springframework.web.bind.annotation.RestController; import
+ * org.springframework.web.multipart.MultipartFile;
+ * 
+ * import com.asr.website.model.Trainer; import
+ * com.asr.website.service.TrainerService;
+ * 
+ * import java.io.File; import java.io.IOException; import java.nio.file.Files;
+ * import java.nio.file.Path; import java.nio.file.Paths;
+ * 
+ * @RestController
+ * 
+ * @CrossOrigin(origins = "http://127.0.0.1:5500")
+ * 
+ * @RequestMapping("/api/trainers") public class TrainerController {
+ * 
+ * @Autowired private TrainerService trainerService;
+ * 
+ * // Path to store uploaded resumes (ensure this directory exists) private
+ * static final String UPLOAD_DIR = "C:/Users/Pc/Desktop/ASR-WEB-DOCS/";
+ * 
+ * 
+ * @PostMapping(consumes = "multipart/form-data") public ResponseEntity<Trainer>
+ * submitApplication(
+ * 
+ * @RequestParam("name") String name,
+ * 
+ * @RequestParam("email") String email,
+ * 
+ * @RequestParam("phone") String phone,
+ * 
+ * @RequestParam("expertise") String expertise,
+ * 
+ * @RequestParam("experience") int experience,
+ * 
+ * @RequestParam("bio") String bio,
+ * 
+ * @RequestParam("resume") MultipartFile resume) {
+ * 
+ * // Save the uploaded resume file to the file system String resumeFileName =
+ * saveResumeFileToSystem(resume);
+ * 
+ * // Store the resume binary data in the database byte[] resumeData =
+ * getResumeBinaryData(resume);
+ * 
+ * // Create a Trainer object and set the fields Trainer trainer = new
+ * Trainer(); trainer.setName(name); trainer.setEmail(email);
+ * trainer.setPhone(phone); trainer.setExpertise(expertise);
+ * trainer.setExperience(experience); trainer.setBio(bio);
+ * trainer.setResumePath(resumeFileName); // Store the file path
+ * trainer.setResumeData(resumeData); // Store the binary file data
+ * 
+ * // Save the trainer object in the database Trainer savedTrainer =
+ * trainerService.submitApplication(trainer);
+ * 
+ * return ResponseEntity.ok(savedTrainer); }
+ * 
+ * // Save resume file to the file system private String
+ * saveResumeFileToSystem(MultipartFile resume) { if (resume.isEmpty()) { return
+ * null; }
+ * 
+ * String fileName = System.currentTimeMillis() + "_" +
+ * resume.getOriginalFilename();
+ * 
+ * try { Path filePath = Paths.get(UPLOAD_DIR + fileName);
+ * Files.createDirectories(filePath.getParent()); // Ensure directory exists
+ * Files.write(filePath, resume.getBytes());
+ * 
+ * return filePath.toString(); // Return the file path } catch (IOException e) {
+ * e.printStackTrace(); throw new RuntimeException("Failed to store file " +
+ * fileName, e); } }
+ * 
+ * // Get the binary data of the resume for database storage private byte[]
+ * getResumeBinaryData(MultipartFile resume) { try { return resume.getBytes();
+ * // Return the binary data of the file } catch (IOException e) {
+ * e.printStackTrace(); throw new RuntimeException("Failed to read file data",
+ * e); } } }
+ */
+
+
+
+package com.asr.website.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.asr.website.model.Trainer;
+import com.asr.website.service.TrainerService;
+
+@RestController
+@CrossOrigin(origins = "http://127.0.0.1:5500")
+@RequestMapping("/api/trainers")
+public class TrainerController {
+
+    @Autowired
+    private TrainerService trainerService;
+
+    @PostMapping(consumes = "multipart/form-data")
+    public ResponseEntity<Trainer> submitApplication(
+            @RequestParam("name") String name,
+            @RequestParam("email") String email,
+            @RequestParam("phone") String phone,
+            @RequestParam("expertise") String expertise,
+            @RequestParam("experience") int experience,
+            @RequestParam("bio") String bio,
+            @RequestParam("resume") MultipartFile resume) {
+
+        Trainer trainer = new Trainer();
+        trainer.setName(name);
+        trainer.setEmail(email);
+        trainer.setPhone(phone);
+        trainer.setExpertise(expertise);
+        trainer.setExperience(experience);
+        trainer.setBio(bio);
+
+        Trainer savedTrainer = trainerService.submitApplication(trainer, resume);
+        return ResponseEntity.ok(savedTrainer);
+    }
+}

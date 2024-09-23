@@ -1,0 +1,8 @@
+package com.asr.website.service;
+
+import com.asr.website.model.StudentRegistration;
+
+public class StudentRegistrationService {
+	 StudentRegistration registerStudent(StudentRegistration studentRegistration);
+}
+

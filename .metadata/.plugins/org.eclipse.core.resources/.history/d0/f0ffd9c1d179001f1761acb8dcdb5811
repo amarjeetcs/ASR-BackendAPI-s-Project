@@ -1,0 +1,11 @@
+package com.aviraj.core.java;
+
+public class Practical {
+	public static void main(String[] args) {
+		int x=10;
+		Integer i=Integer.valueOf(x);//since java 1.5 u  do not need to write it
+		Integer i1=x;
+		System.out.println(i1.getClass().getName());
+	}
+
+}

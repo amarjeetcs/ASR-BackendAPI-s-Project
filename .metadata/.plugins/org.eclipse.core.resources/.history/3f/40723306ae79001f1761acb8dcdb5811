@@ -1,0 +1,22 @@
+package com.asr.website.controller;
+
+package com.example.newsletter.controller;
+
+import com.example.newsletter.service.SubscriberService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/newsletter")
+public class SubscriberController {
+
+    @Autowired
+    private com.asr.website.service.SubscriberService subscriberService;
+
+    @PostMapping("/subscribe")
+    public ResponseEntity<String> subscribe(@RequestParam String email) {
+        subscriberService.addSubscriber(email);
+        return ResponseEntity.ok("Successfully subscribed with email: " + email);
+    }
+}

@@ -1,0 +1,5 @@
+package com.asr.website.repository;
+
+public class StudentRegistrationRepository {
+
+}
